@@ -3,7 +3,7 @@ A novel neural net to deepfake a former coworker
 
 # Anyone can make can deepfake. Not everyone can do it on a budget
 
-robo-tim aims to explore the possibility of create fast, lightweight datasets and models by focusing on a particular subject. The research is geared toward producing quality output with far less data and processing than traditional networks demand. It also does not rely on existing datasets ot pretrained models, instead using bespoke datasets that are tailored for a given source.
+robo-tim aims to explore the possibility of creating fast, lightweight datasets and models by focusing on a particular subject. The research is geared toward producing quality output with far less data and processing than traditional networks demand. It also does not rely on existing datasets ot pretrained models, instead using bespoke datasets that are tailored for a given source.
 
 ## How to go about this
 
