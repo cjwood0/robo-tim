@@ -68,18 +68,19 @@ def transcribe_gcs(wav_num):
             
             sentence = f'{sentence} {word}'   
             if word.endswith('.'):
-                sentence_send = word_info.end_time
+                sentence_end = word_info.end_time
                 sentence = sentence.strip()
                 # Create filename
                 filename = f'wavs/TM00{wav_num}-{str(sentence_num).rjust(4, "0")}.wav'
 
                 print(f"Sentence: {sentence.strip()}, sentence_start: {sentence_start}, sentence_end: {sentence_end})")
                 #use pydub to slice and export in th proper directory structure
-                wav_segnment = full_wav[int(sentence_start * 1000):int(sentence_end * 1000)]
-                wav_segment.export(filename, format="wav", parameters['-ac', '1', '-ar', '16000'])
+                #TODO MUST find the end of the word by silence using ffmpeg seeking
+                wav_segment = full_wav[int(sentence_start.seconds * 1000):int(sentence_end.seconds * 1000)]
+                wav_segment.export(filename, format="wav", parameters=['-ac', '1', '-ar', '16000'])
 
                 #write file|sentence mapping to file_list
-                file_list.write(f'{filename}|sentence{os.lenesep}')
+                file_list.write(f'{filename}|{sentence}{os.linesep}')
 
                 sentence = ""
                 sentence_start = None
@@ -93,7 +94,7 @@ if __name__ == "__main__":
         description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter
     )
 
-    for i in range(1, 10)
+    for i in range(1, 10):
         transcribe_gcs(i)
 
     file_list.close()
