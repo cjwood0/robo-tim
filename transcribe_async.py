@@ -64,7 +64,9 @@ def transcribe_gcs(wav_num):
         for word_info in result.alternatives[0].words:
             word = word_info.word
             start_time = word_info.start_time
-            if sentence_start is None: sentence_start = start_time
+            if sentence_start is None:
+                #TODO use ffmpeg to find millisecond beginning of word
+                sentence_start = start_time
             
             sentence = f'{sentence} {word}'   
             if word.endswith('.'):
