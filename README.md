@@ -25,4 +25,8 @@ Once the TTS sytnhesizer is created, the next step will be facial modeling, whic
 
 As I do not have much motion footage, the plan is to focus on mapping a source face to the target and, if possible, real-time vocoding, wich I hope to be resource light enough to host freely on a PaaS provider using Flask.
 
+## Update
+
+I've found the bleeding edge. It's a combination of Nvidia's FastPitch for mel-spectrogram generation from text and WaveGlow for synthesis of the actual wave form. Manaully aligning automaticaally generated STT from YouTube has proven tedious and not feasible with what little time I have left to be able to have something to show for this by 3/9/21. Therefore, I am going to experiment with the free hour of Google STT and see how alignment fairs, along with using FastPitch trained on LJS to see how agnostic the mel-spectrograms produced are with respect to the timbre of a male voice. I believe the focus is on infelection and intonation, not necessarily pitch, so I have hope. There is also the possibility of opening up wht pre-trained model and continuing training based on my collection of utterances. That may prove to be a step in the wrong direction, as I would have to adjust the hyperparams so drastically that I believe I would be looking at training times beyond the deadline. Also, as my understanding evolves, this may be entirely unnecessary, simply using the pretrained LJS model to create a new model from my own dataset. Hopefully, we're about to find out soon.
+
 ## More details to come
